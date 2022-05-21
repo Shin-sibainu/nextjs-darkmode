@@ -1,23 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap");
 
 :root {
-  --color-primary-accent: #2614c7;
   --color-primary: #000;
-  --color-button: #3d486c;
+  --color-button: #324171;
   --color-paragraph: #797979;
   --color-button-text: rgb(255, 255, 255);
   --color-background: #fff;
-  --color-anchor: #000aff;
 }
 
 [data-theme="dark"] {
-  --color-primary-accent: #00ff4c;
   --color-primary: #fff;
-  --color-button: #00ff4c;
+  --color-button: #32ed6a;
   --color-paragraph: #8a8a8a;
   --color-button-text: rgb(0, 0, 0);
   --color-background: #22212b;
-  --color-anchor: #00ff4c;
 }
 
 body {
@@ -86,6 +82,7 @@ section .content p {
   padding: 15px 30px;
   font-weight: bold;
   font-size: 17px;
+  cursor: pointer;
 }
 
 /* switch */
