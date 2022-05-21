@@ -19,7 +19,7 @@ class MyDocument extends Document {
   }
 }
 
-// This function needs to be a String
+//関数はString型でないとダメ。
 const themeInitializerScript = `(function() {
 	${setInitialColorMode.toString()}
 	setInitialColorMode();
@@ -27,8 +27,9 @@ const themeInitializerScript = `(function() {
 `;
 
 function setInitialColorMode() {
-  // Check initial color preference
+  // 最初のpreferenceを確認して、darkかlightの文字列を返す関数
   function getInitialColorMode() {
+    //ストレージからthemeは取得する。
     const persistedPreferenceMode = window.localStorage.getItem("theme");
     const hasPersistedPreference = typeof persistedPreferenceMode === "string";
 
@@ -49,6 +50,7 @@ function setInitialColorMode() {
 
   const currentColorMode = getInitialColorMode();
   const element = document.documentElement;
+
   element.style.setProperty("--initial-color-mode", currentColorMode);
 
   // If darkmode apply darkmode
@@ -57,40 +59,3 @@ function setInitialColorMode() {
 }
 
 export default MyDocument;
-
-// const themeInitializerScript = `(function() {
-//     ${setInitialColorMode.toString()}
-//     setInitialColorMode();
-// })()`;
-
-// function setInitialColorMode() {
-//   //現在どのテーマ状態なのかを把握する関数。
-//   function getInitialColorMode() {
-//     const persistedPreferenceMode = window.localStorage.getItem("theme");
-//     const hasPersistedPreference = typeof persistedPreferenceMode === "string";
-//     if (hasPersistedPreference) {
-//       return persistedPreferenceMode;
-//     }
-
-//     //Js用のメディアクエリ。今現在の状態がdarkモードかを判定する。
-//     const preference = window.matchMedia(`(preference-color-scheme: dark)`);
-//     const hasMediaQueryPreference = typeof preference.matches == "boolean";
-
-//     if (hasMediaQueryPreference) {
-//       //trueならdarkの文字列を、falseならlightの文字列を返す。
-//       return preference.matches ? "dark" : "light";
-//     }
-
-//     //デフォルトはlight
-//     return "light";
-//   }
-
-//   //ここで関数を呼ぶ。
-//   const currentColorMode = getInitialColorMode();
-//   const element = document.documentElement;
-//   element.style.setProperty("--initial-color-mode", currentColorMode);
-
-//   if (currentColorMode === "dark") {
-//     document.documentElement.setAttribute("data-theme", "dark");
-//   }
-// }

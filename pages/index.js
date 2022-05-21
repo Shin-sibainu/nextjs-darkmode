@@ -19,6 +19,15 @@ export default function Home() {
     }
   }, [darkTheme]);
 
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const initialColorValue = root.style.getPropertyValue(
+      "--initial-color-mode"
+    );
+    // Set initial darkmode to light
+    setDarkTheme(initialColorValue === "dark");
+  }, []);
+
   return (
     <div>
       <div className="container">
